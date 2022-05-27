@@ -30,7 +30,6 @@
     │   └── utils
     │       └── ...
     ├── configs
-    │   ├── ifunny_test_config.yml
     │   └── movielens10m_config.yml
     ├── notebooks
     │   └── ...
@@ -41,9 +40,9 @@
 ## Experiment run
 
 ### Experiment: movielens10M
-    cd /srv/ml_content_rate/experiments/DS-223-conditional-cvae-model
+    cd list-cvae-recsys
     wget https://files.grouplens.org/datasets/movielens/ml-10m.zip
     unzip ml-10m.zip
-    export PYTHONPATH=${PYTHONPATH}:/srv/ml_content_rate/experiments/DS-223-conditional-cvae-model
+    export PYTHONPATH=${PYTHONPATH}:/path/to/list-cvae-recsys
     /usr/bin/python3.8 -u src/pipelines/prepare_data.py --config configs/movielens10m_config.yml
     /usr/bin/python3.8 -u src/pipelines/evaluate.py --config configs/movielens10m_config.yml

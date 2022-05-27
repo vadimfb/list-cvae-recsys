@@ -23,7 +23,7 @@ train_eval:
     prior_hidden_dims: [128]
     encoder_hidden_dims: [256, 128]
     decoder_hidden_dims: [64, 128, 256]
-    device: cuda:0
+    device: cpu
   train_parameters:
     epochs: 1
     batch_size: 64
@@ -43,7 +43,7 @@ evaluate:
     prior_hidden_dims: [128]
     encoder_hidden_dims: [256, 128]
     decoder_hidden_dims: [64, 128, 256]
-    device: cuda:0
+    device: cpu
   train_parameters:
     epochs: 1
     batch_size: 64

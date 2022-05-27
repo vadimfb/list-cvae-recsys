@@ -46,3 +46,12 @@
     export PYTHONPATH=${PYTHONPATH}:/path/to/list-cvae-recsys
     /usr/bin/python3.8 -u src/pipelines/prepare_data.py --config configs/movielens10m_config.yml
     /usr/bin/python3.8 -u src/pipelines/evaluate.py --config configs/movielens10m_config.yml
+
+### Experiment: other data
+
+Collect interactions in list-cvae-recsys/other_data/interactions.csv with columns: user_id, item_id, rating, ts
+
+    cd list-cvae-recsys
+    export PYTHONPATH=${PYTHONPATH}:/path/to/list-cvae-recsys
+    /usr/bin/python3.8 -u src/pipelines/prepare_data.py --config configs/common_config.yml
+    /usr/bin/python3.8 -u src/pipelines/evaluate.py --config configs/common_config.yml

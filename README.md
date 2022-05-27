@@ -1,7 +1,7 @@
 # List-CVAE repa
 
 ## Repa structure
-    DS-223-conditional-cvae-model
+    list-cvae-recsys
     ├── src
     │   ├── data_extraction
     │   │   ├── data_readers.py                     # module of data loading

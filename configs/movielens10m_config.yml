@@ -1,0 +1,60 @@
+prepare_data:
+  reader_name: MovielensDataReader
+  reader_params:
+    source_path: ml-10M100K/ratings.dat
+  item_mapper: PandasColumnMapper
+  path_to_item_mapper: data/item_mapper.pkl
+  user_mapper: PandasColumnMapper
+  path_to_user_mapper: data/user_mapper.pkl
+  train_row_interactions_path: data/ml10m_train_row_interactions.csv
+  test_row_interactions_path: data/ml10m_test_row_interactions.csv
+  path_to_data_info: data/data_info.json
+  test_size: 0.2
+  slate_size: 10
+  max_number_of_slates_per_user: 5
+  path_to_train_slates: data/train_slates.csv
+  path_to_test_slates: data/test_slates.csv
+
+train_eval:
+  model_parameters:
+    slate_size: 10
+    embedding_dim: 128
+    latent_dim: 32
+    prior_hidden_dims: [128]
+    encoder_hidden_dims: [256, 128]
+    decoder_hidden_dims: [64, 128, 256]
+    device: cuda:0
+  train_parameters:
+    epochs: 1
+    batch_size: 64
+  optimizer_parameters:
+    lr: 0.001
+  dataset_info_path: data/data_info.json
+  path_to_train_slates: data/train_slates.csv
+  path_to_test_slates: data/test_slates.csv
+  train_curve_fig: data/train_curve_fig.png
+  eval_curve_fig: data/test_curve_fig.png
+
+evaluate:
+  model_parameters:
+    slate_size: 10
+    embedding_dim: 128
+    latent_dim: 32
+    prior_hidden_dims: [128]
+    encoder_hidden_dims: [256, 128]
+    decoder_hidden_dims: [64, 128, 256]
+    device: cuda:0
+  train_parameters:
+    epochs: 1
+    batch_size: 64
+  optimizer_parameters:
+    lr: 0.001
+  dataset_info_path: data/data_info.json
+  path_to_train_slates: data/train_slates.csv
+  path_to_test_slates: data/test_slates.csv
+  als_params:
+    embedding_dim: 64
+  train_row_interactions_path: data/ml10m_train_row_interactions.csv
+  topk: 10
+  metric_names: ['mean_average_precision_at_k', 'normalized_discounted_cumulative_gain_at_k', 'precision_at_k', 'recall_at_k']
+  eval_results_path: data/ml10m_eval_results.csv
